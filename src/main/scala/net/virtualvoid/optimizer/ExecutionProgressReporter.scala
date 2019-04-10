@@ -162,13 +162,14 @@ object ExecutionProgressReporter {
     val signs = setup.slots.map(stateAtSlot).map(stateSign).mkString
 
     // FIXME: put widths into format string
+    // taskName width was too low :(
     Seq(
       f"${data.workTime.get / 1000000}%6d ms",
-      f"${scala.Console.GREEN}${data.pureTime / 1000000}%6d ms",
-      f"${scala.Console.RED}${data.lockTime / 1000000}%6d ms",
-      f"${scala.Console.CYAN}${data.downloadTime / 1000000}%6d ms",
-      f"${data.downloads.size}%2d${scala.Console.RESET}",
-      f"$shortName%-30s",
+      //f"${scala.Console.GREEN}${data.pureTime / 1000000}%6d ms",
+      //f"${scala.Console.RED}${data.lockTime / 1000000}%6d ms",
+      //f"${scala.Console.CYAN}${data.downloadTime / 1000000}%6d ms",
+      //f"${data.downloads.size}%2d${scala.Console.RESET}",
+      f"${scala.Console.YELLOW}${data.taskName}",
       s"$signs${scala.Console.RESET}>").mkString(" ")
   }
 }
